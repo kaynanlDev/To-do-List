@@ -21,14 +21,17 @@ const addItem = (text) =>{
 
     let btnCheck = document.createElement('button')
     btnCheck.innerHTML = '<img src="img/check.svg" alt="check">'
+    btnCheck.classList.add('check')
     divList.appendChild(btnCheck)
 
     let btnEdit = document.createElement('button')
     btnEdit.innerHTML = '<img src="img/edit.svg" alt="edit">'
+    btnEdit.classList.add('edit')
     divList.appendChild(btnEdit)
 
     let btnDelete = document.createElement('button')
     btnDelete.innerHTML = '<img src="img/delete.svg" alt="delete">'
+    btnDelete.classList.add('delete')
     divList.appendChild(btnDelete)
 
     todo.appendChild(divList)
@@ -44,4 +47,21 @@ formAdd.addEventListener('submit', (e) =>{
 
 
     addItem(addValue)
+})
+
+document.addEventListener('click', (e) =>{
+    const elementTarget = e.target
+    const parentTarget = elementTarget.closest('div')
+    
+    if(elementTarget.classList.contains('check')){
+        elementTarget.style.backgroundColor = 'red'
+    }
+    if(elementTarget.classList.contains('edit')){
+        console.log('editou')
+    }
+    if(elementTarget.classList.contains('delete')){
+        parentTarget.remove()
+    }
+
+    console.log(elementTarget)
 })
